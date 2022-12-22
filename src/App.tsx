@@ -9,10 +9,10 @@ import { FaDiscord } from 'react-icons/fa';
 const App: React.FC = () => {
   return (
     <header>
-      <nav className=' bg-[#1F2937] flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5'>
+      <nav className=' bg-[#1F2937] flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5 relative'>
         <a className='flex items-center' href='#'>
           <img
-            className='mr-3 h-6 animate-[spin_19s_linear_infinite] sm:h-9'
+            className='mr-3 h-9 animate-[spin_19s_linear_infinite]'
             src={icon}
             alt=''
           />
@@ -21,7 +21,7 @@ const App: React.FC = () => {
           </span>
         </a>
         <div className='hidden lg:flex'>
-          <ul className='flex font-medium lg:space-x-8 '>
+          <ul className='flex font-medium space-x-8 '>
             <li className='block'>
               <a
                 className='text-gray-200 transition-all hover:text-white text-sm block pr-4 pl-3'
@@ -63,7 +63,7 @@ const App: React.FC = () => {
           <button
             className='text-white
             hidden
-            md:block
+            sm:block
             bg-[#1956db]
            hover:bg-[#0e48c5]
            transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5  focus:outline-none mr-2 
@@ -71,7 +71,7 @@ const App: React.FC = () => {
           >
             Get started
           </button>
-          <div className='flex space-x-3 '>
+          <div className='flex space-x-3'>
             <button>
               <SlSocialGithub
                 className='h-5 w-6
