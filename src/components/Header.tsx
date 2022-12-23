@@ -1,125 +1,154 @@
 import React from 'react';
+import icon from '.././assets/images/icon.svg';
+import { SlSocialGithub } from 'react-icons/sl';
+import { TbSun, TbSunOff } from 'react-icons/tb';
+import { FaDiscord, FaHome } from 'react-icons/fa';
+import { FiSearch } from 'react-icons/fi';
+import { VscLibrary } from 'react-icons/vsc';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 export const Header = () => {
+  const [burger, setBurger] = React.useState(false);
   return (
-    <header>
-      <nav className='bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800'>
-        <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
-          <a href='https://flowbite.com' className='flex items-center'>
-            <img
-              src='https://flowbite.com/docs/images/logo.svg'
-              className='mr-3 h-6 sm:h-9'
-              alt='Flowbite Logo'
-            />
-            <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
-              Flowbite
-            </span>
-          </a>
-          <div className='flex items-center lg:order-2'>
-            <a
-              href='#'
-              className='text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800'
-            >
-              Log in
-            </a>
-            <a
-              href='#'
-              className='text-white bg-gray-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800'
-            >
-              Get started
-            </a>
-            <button
-              data-collapse-toggle='mobile-menu-2'
-              type='button'
-              className='inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
-              aria-controls='mobile-menu-2'
-              aria-expanded='false'
-            >
-              <span className='sr-only'>Open main menu</span>
-              <svg
-                className='w-6 h-6'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
+    <header className='bg-[#1F2937]'>
+      <nav className=' flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5 relative'>
+        <a className='flex items-center' href='#'>
+          <img
+            className='mr-3 h-9 animate-[spin_19s_linear_infinite]'
+            src={icon}
+            alt=''
+          />
+          <span className='text-xl font-semibold text-gray-100 transition-all hover:text-white'>
+            Weather App
+          </span>
+        </a>
+        <div className='hidden lg:flex'>
+          <ul className='flex font-medium space-x-8 '>
+            <li className='block'>
+              <a
+                className='text-gray-200 transition-all hover:text-white text-sm block pr-4 pl-3'
+                href='#'
               >
-                <path
-                  fill-rule='evenodd'
-                  d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-                  clip-rule='evenodd'
-                ></path>
-              </svg>
-              <svg
-                className='hidden w-6 h-6'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
+                Home
+              </a>
+            </li>
+            <li className='block'>
+              <a
+                className='text-gray-200 transition-all text-sm
+            hover:text-white block pr-4 pl-3'
+                href='#'
               >
-                <path
-                  fill-rule='evenodd'
-                  d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                  clip-rule='evenodd'
-                ></path>
-              </svg>
+                Search
+              </a>
+            </li>
+            <li className='block'>
+              <a
+                className='text-gray-200
+            hover:text-white  transition-all text-sm block pr-4 pl-3'
+                href='#'
+              >
+                Saved
+              </a>
+            </li>
+            <li className='block'>
+              <a
+                className='text-gray-200
+            hover:text-white transition-all text-sm block pr-4 pl-3'
+                href='#'
+              >
+                About
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className='flex items-center gap-4'>
+          <div className='flex space-x-3'>
+            <button>
+              <a href='https://github.com/chernyshevartemiy' target='_blank'>
+                <SlSocialGithub
+                  className='h-5 w-6
+        transition-all text-gray-400 hover:text-gray-100 cursor-pointer'
+                />
+              </a>
+            </button>
+            <button>
+              <a
+                href='https://discord.com/users/339701172564656128'
+                target='_blank'
+              >
+                <FaDiscord
+                  className='h-5
+        transition-all w-6 text-gray-400 hover:text-gray-100'
+                />
+              </a>
+            </button>
+            <button>
+              <TbSunOff
+                className='h-5 w-6 text-gray-400
+          transition-all hover:text-gray-100'
+              />
             </button>
           </div>
-          <div
-            className='hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1'
-            id='mobile-menu-2'
+          <button
+            className='text-white
+        hidden
+        sm:block
+        bg-[#1956db]
+       hover:bg-[#0e48c5]
+       transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5  focus:outline-none ml-2 
+       '
           >
-            <ul className='flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0'>
-              <li>
-                <a
-                  href='#'
-                  className='block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white'
-                  aria-current='page'
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
-                >
-                  Company
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
-                >
-                  Marketplace
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
-                >
-                  Team
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700'
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+            Get started
+          </button>
+
+          <button
+            onClick={() => setBurger((prev) => !prev)}
+            className='p-2 block lg:hidden text-white rounded-lg hover:bg-gray-700
+      transition-all focus:outline-none focus:ring-2 focus:ring-gray-300'
+          >
+            <svg
+              className='w-6 h-6'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
+              ></path>
+            </svg>
+          </button>
         </div>
       </nav>
+      {burger && (
+        <div className='text-gray-100 max-w-screen-xl mx-auto block lg:hidden font-semibold'>
+          <ul className='flex-col px-4 bg-[#1F2937] w-full'>
+            <li className='py-2 hover:text-[#1956db] w-full cursor-pointer transition-all'>
+              <button className='flex items-center space-x-2'>
+                <FaHome />
+                <span>Home</span>
+              </button>
+            </li>
+            <li className='py-2 hover:text-[#1956db] w-full cursor-pointer transition-all'>
+              <button className='flex items-center space-x-2'>
+                <FiSearch />
+                <span>Search</span>
+              </button>
+            </li>
+            <li className='py-2 hover:text-[#1956db] w-full cursor-pointer transition-all'>
+              <button className='flex items-center space-x-2'>
+                <VscLibrary />
+                <span>Saved</span>
+              </button>
+            </li>
+            <li className='py-2 hover:text-[#1956db] w-full cursor-pointer transition-all'>
+              <button className='flex items-center space-x-2'>
+                <AiOutlineInfoCircle />
+                <span>About</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };

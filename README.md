@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+https://api.openweathermap.org/data/2.5/weather?q=Kazan&units=metric&appid=20c4bd51cf84f12ebda1a2d7f69862bc
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
