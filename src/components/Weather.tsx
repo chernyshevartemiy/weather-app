@@ -24,7 +24,6 @@ export const Weather: React.FC<any> = ({ day }) => {
   };
   const { dt_txt: date } = day;
   const event = new Date(date);
-  console.log(event.getDay());
   return (
     <div className='w-[130px] h-[160px] flex flex-col items-center bg-[#374151] rounded-lg border-2 border-[#DCDEE0] hover:-translate-y-2 transition-all cursor-pointer'>
       <span className='my-3'>{getDay()}</span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import sun from '.././assets/images/sun.svg';
 import { getForecast } from '../async/weatherApi';
+import { Input } from '../components/Input';
 import { Weather } from '../components/Weather';
 
 export const Home = () => {
@@ -17,6 +18,7 @@ export const Home = () => {
   }, []);
   return (
     <main className='text-gray-100 max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center mt-14'>
+      <Input/>
       <span className='text-3xl mb-5 font-bold'>
         {Math.ceil(forecast[0]?.main?.temp)}°C
       </span>

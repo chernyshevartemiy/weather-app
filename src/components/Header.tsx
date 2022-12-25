@@ -6,9 +6,14 @@ import { FaDiscord, FaHome } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { VscLibrary } from 'react-icons/vsc';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-
+import { useAppDispatch } from '../hooks/hooks';
+import { getWeather } from '../store/slices/weatherSlice';
 export const Header = () => {
-  const [burger, setBurger] = React.useState(false);
+  const dispatch = useAppDispatch();
+  React.useEffect(() => {
+    dispatch(getWeather('Kazan'))
+  })
+  const [burger, setBurger] = React.useState<boolean>(false);
   return (
     <header className='bg-[#1F2937]'>
       <nav className=' flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5 relative'>
