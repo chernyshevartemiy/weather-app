@@ -6,13 +6,9 @@ import { FaDiscord, FaHome } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { VscLibrary } from 'react-icons/vsc';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { useAppDispatch } from '../hooks/hooks';
-import { getWeather } from '../store/slices/weatherSlice';
-export const Header = () => {
-  const dispatch = useAppDispatch();
-  React.useEffect(() => {
-    dispatch(getWeather('Kazan'))
-  })
+
+
+export const Header: React.FC = () => {
   const [burger, setBurger] = React.useState<boolean>(false);
   return (
     <header className='bg-[#1F2937]'>
@@ -117,9 +113,7 @@ export const Header = () => {
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'
             >
-              <path
-                d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-              ></path>
+              <path d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'></path>
             </svg>
           </button>
         </div>

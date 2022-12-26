@@ -43,16 +43,6 @@ type Weather = {
   icon: string;
 };
 
-type WeatherState = {
-  status: string;
-  weather: [];
-};
-
-const initialState: WeatherState = {
-  status: '',
-  weather: [],
-};
-
 type WeatherResponse = {
   coord: Coord;
   weather: Weather[];
@@ -67,15 +57,31 @@ type WeatherResponse = {
   cod: number;
 };
 
+type WeatherState = {
+  status: string | null;
+  weather: WeatherResponse | null;
+};
+
+const initialState: WeatherState = {
+  status: null,
+  weather: null,
+};
+
 export const getWeather = createAsyncThunk(
   'weather/getForecast',
-  async (q: string) => {
+  async (q: string, { getState, rejectWithValue }) => {
     try {
-      const data: WeatherResponse = await axios.get(
+      const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=metric&appid=20c4bd51cf84f12ebda1a2d7f69862bc`
       );
-      console.log(data);
-    } catch (error) {}
+      const data: WeatherResponse = response.data;
+      if (data) {
+        return data;
+      }
+      return rejectWithValue('rejected');
+    } catch (error: any) {
+      return rejectWithValue('rejected');
+    }
   }
 );
 
@@ -83,9 +89,27 @@ const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setForecast(state, action: PayloadAction<[]>) {
+    setForecast(state, action: PayloadAction<WeatherResponse>) {
       state.weather = action.payload;
+      console.log(state.weather);
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getWeather.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.weather = action.payload;
+        state.status = 'fulfilled';
+      }
+    });
+    builder.addCase(getWeather.pending, (state, action) => {
+      state.status = 'pending';
+    });
+    builder.addCase(getWeather.rejected, (state, action) => {
+      if (action.payload === 'rejected') {
+        state.status = action.payload;
+        state.weather = null;
+      }
+    });
   },
 });
 
