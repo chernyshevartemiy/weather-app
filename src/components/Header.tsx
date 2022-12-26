@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
       <nav className=' flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5 relative'>
         <a className='flex items-center' href='#'>
           <img
-            className='mr-3 h-9 animate-[spin_19s_linear_infinite]'
+            className='mr-3 h-9'
             src={icon}
             alt=''
           />

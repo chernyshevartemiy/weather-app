@@ -1,3 +1,4 @@
+import { Weather } from './../../components/Weather';
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -36,14 +37,14 @@ type Coord = {
   lat: number;
 };
 
-type Weather = {
+export type Weather = {
   id: number;
   main: string;
   description: string;
   icon: string;
 };
 
-type WeatherResponse = {
+export type WeatherResponse = {
   coord: Coord;
   weather: Weather[];
   main: Main;
@@ -60,25 +61,39 @@ type WeatherResponse = {
 type WeatherState = {
   status: string | null;
   weather: WeatherResponse | null;
+  isMounted: boolean;
 };
 
 const initialState: WeatherState = {
   status: null,
   weather: null,
+  isMounted: false,
 };
 
 export const getWeather = createAsyncThunk(
-  'weather/getForecast',
+  'weather/getWeather',
   async (q: string, { getState, rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=metric&appid=20c4bd51cf84f12ebda1a2d7f69862bc`
-      );
-      const data: WeatherResponse = response.data;
-      if (data) {
+      const state = getState();
+      const { weather } = state as { weather: WeatherState };
+      const { isMounted } = weather;
+      if (!isMounted) {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=metric&appid=20c4bd51cf84f12ebda1a2d7f69862bc`
+        );
+        const data: WeatherResponse = response.data;
         return data;
+      } else {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=metric&appid=20c4bd51cf84f12ebda1a2d7f69862bc`
+        );
+        console.log(response);
+        const data: WeatherResponse = response.data;
+        if (data) {
+          return data;
+        }
+        return rejectWithValue('rejected');
       }
-      return rejectWithValue('rejected');
     } catch (error: any) {
       return rejectWithValue('rejected');
     }
@@ -89,14 +104,18 @@ const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setForecast(state, action: PayloadAction<WeatherResponse>) {
+    setWeather(state, action: PayloadAction<WeatherResponse>) {
       state.weather = action.payload;
       console.log(state.weather);
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getWeather.fulfilled, (state, action) => {
-      if (action.payload) {
+      if (!state.isMounted) {
+        state.weather = action.payload;
+        state.status = null;
+        state.isMounted = true;
+      } else {
         state.weather = action.payload;
         state.status = 'fulfilled';
       }
@@ -114,4 +133,4 @@ const weatherSlice = createSlice({
 });
 
 export default weatherSlice.reducer;
-export const { setForecast } = weatherSlice.actions;
+export const { setWeather } = weatherSlice.actions;
