@@ -14,7 +14,6 @@ export const Home = () => {
   );
   const searchHandler = React.useCallback(
     debounce((e) => {
-      console.log('Hello, World!');
       dispatch(getWeather(e));
     }, 1000),
     []
@@ -38,7 +37,7 @@ export const Home = () => {
       />
       <span className='text-5xl mb-5 font-bold flex items-center justify-center'>
         <img
-        className='h-20 mr-3'
+          className='h-20 mr-3'
           src={getTempIcon(
             Math.ceil(weather?.main.temp ? weather.main.temp : 0)
           )}
@@ -52,29 +51,21 @@ export const Home = () => {
       </span>
       <ul className='flex flex-col sm:flex-row items-center mb-4 space-y-2 sm:space-y-0'>
         <li className='sm:after:content-["•"] sm:after:mx-3 after:opacity-70'>
-          <span className='text-lg'>
-            Feels like:{' '}
+          <span className='font-bold'>Feels like: </span>
+          <span>
             {Math.ceil(weather?.main.feels_like ? weather?.main.feels_like : 0)}
             °C
           </span>
         </li>
-        <li className='sm:after:content-["•"] sm:after:mx-3 after:opacity-70 text-lg'>
-          Humidity: {weather?.main.humidity}%
+        <li className='sm:after:content-["•"] sm:after:mx-3 after:opacity-70'>
+          <span className='font-bold'>Humidity:</span>{' '}
+          <span>{weather?.main.humidity}%</span>
         </li>
-        <li className='text-lg'>Info: {weather?.weather[0].main}</li>
-      </ul>
-      <ul className='flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0'>
-        <li className='sm:after:content-["•"] after:mx-3 after:opacity-70 text-lg'>
-          <span></span>
-        </li>
-        <li className='sm:after:content-["•"] after:mx-3 after:opacity-70'>
-          <span></span>
-        </li>
-        <li className='sm:after:content-["•"] after:mx-3 after:opacity-70'>
-          <span></span>
+        <li className=''>
+          <span className='font-bold'>Info:</span>{' '}
+          <span>{weather?.weather[0].main}</span>
         </li>
       </ul>
-      <div className='flex flex-wrap gap-4 justify-center py-4'></div>
     </main>
   );
 };
