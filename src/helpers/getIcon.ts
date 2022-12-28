@@ -8,7 +8,6 @@ import fewclouds from '../assets/icons/fewclouds.svg';
 import cloudy from '../assets/icons/fewclouds.svg';
 import brkclouds from '../assets/icons/brkclouds.svg';
 import overclouds from '../assets/icons/overclouds.svg';
-import type { Weather, WeatherResponse } from './../store/slices/weatherSlice';
 
 const drizzleW = {
   drizzleI: [300, 301, 302, 310, 311, 312, 313, 314, 321],

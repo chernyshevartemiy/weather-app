@@ -5,6 +5,7 @@ type IProps = {
   value: string;
   onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
+
 export const Input: React.FC<IProps> = (props) => {
   const { value, onChangeInput } = props;
   const { status } = useAppSelector((state) => state.weather);
@@ -25,7 +26,7 @@ export const Input: React.FC<IProps> = (props) => {
           <span className='text-xs px-2.5'>Loading..</span>
         ) : (
           <span className='text-red-500 text-xs px-2.5'>
-            Enter a valid city name
+            Error: couldn't find city
           </span>
         )}
       </div>

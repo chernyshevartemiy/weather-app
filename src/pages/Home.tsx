@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input } from '../components/Input';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { getWeather } from '../store/slices/weatherSlice';
+import { getWeather } from '../async/getWeather';
 import { debounce } from 'lodash';
 import getIcon from '../helpers/getIcon';
 import getTempIcon from '../helpers/getTemp';
@@ -9,9 +9,7 @@ import getTempIcon from '../helpers/getTemp';
 export const Home = () => {
   const [value, setValue] = React.useState<string>('');
   const dispatch = useAppDispatch();
-  const { weather, status, isMounted } = useAppSelector(
-    (state) => state.weather
-  );
+  const { weather } = useAppSelector((state) => state.weather);
   const searchHandler = React.useCallback(
     debounce((e) => {
       dispatch(getWeather(e));
@@ -22,11 +20,6 @@ export const Home = () => {
     setValue(e.target.value);
     searchHandler(e.target.value);
   };
-  React.useEffect(() => {
-    if (!isMounted) {
-      dispatch(getWeather('Kyiv'));
-    }
-  }, [value]);
   return (
     <main className='text-gray-100 max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center mt-10'>
       <Input value={value} onChangeInput={onChangeInput} />

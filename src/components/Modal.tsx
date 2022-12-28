@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch } from '../hooks/hooks';
-import { getWeather } from '../store/slices/weatherSlice';
+import { getWeather } from '../async/getWeather';
 type IModal = {
   isVisible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
