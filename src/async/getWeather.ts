@@ -6,7 +6,7 @@ import type { Coords } from '../App';
 
 export const getWeather = createAsyncThunk(
   'weather/getWeather',
-  async (coord: (Coords | string), { getState, rejectWithValue }) => {
+  async (coord: Coords | string, { getState, rejectWithValue }) => {
     try {
       const state = getState();
       const { weather } = state as { weather: WeatherState };

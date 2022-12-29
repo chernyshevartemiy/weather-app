@@ -4,7 +4,7 @@ import { getWeather } from '../../async/getWeather';
 
 export type WeatherState = {
   status: string | null;
-  weather: WeatherResponse | null | undefined;
+  weather: WeatherResponse | null;
   isMounted: boolean;
 };
 
@@ -20,18 +20,21 @@ const weatherSlice = createSlice({
   reducers: {
     setWeather(state, action: PayloadAction<WeatherResponse>) {
       state.weather = action.payload;
-      console.log(state.weather);
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getWeather.fulfilled, (state, action) => {
       if (!state.isMounted) {
-        state.weather = action.payload;
-        state.status = null;
-        state.isMounted = true;
+        if (action.payload) {
+          state.weather = action.payload;
+          state.status = null;
+          state.isMounted = true;
+        }
       } else {
-        state.weather = action.payload;
-        state.status = 'fulfilled';
+        if (action.payload) {
+          state.weather = action.payload;
+          state.status = 'fulfilled';
+        }
       }
     });
     builder.addCase(getWeather.pending, (state) => {
