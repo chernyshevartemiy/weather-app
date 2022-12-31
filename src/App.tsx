@@ -16,7 +16,7 @@ type Location = {
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
-  const [theme, setTheme] = React.useState<boolean>(false);
+  const [theme, setTheme] = React.useState<boolean>(true);
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (response: Location) => {
@@ -24,8 +24,8 @@ const App: React.FC = () => {
       },
       (error: any) => {
         const coords = {
-          latitude: 49.450001,
-          longitude: 30.523333,
+          latitude: 37.450001,
+          longitude: 12.523333,
         };
         dispatch(getWeather(coords));
       }
