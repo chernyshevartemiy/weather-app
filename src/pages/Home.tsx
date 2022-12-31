@@ -24,16 +24,21 @@ export const Home: React.FC<IHome> = ({ theme }) => {
     setValue(e.target.value);
     searchHandler(e.target.value);
   };
+
+  React.useEffect(() => {
+    document.body.style.backgroundColor = theme ? '#101827' : '#DDDDDD';
+  }, [theme]);
+
   return (
     <main className={theme ? 'dark' : ''}>
-      <div className='text-gray-100 flex-grow bg-[#101827] max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center pt-10'>
-        <Input value={value} onChangeInput={onChangeInput} />
+      <div className='text-gray-100 flex-grow max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center pt-10'>
+        <Input theme={theme} value={value} onChangeInput={onChangeInput} />
         <img
           className='h-40'
           src={getIcon(weather?.weather[0].id ? weather?.weather[0].id : 800)}
           alt=''
         />
-        <span className='text-5xl mb-5 font-bold flex items-center justify-center'>
+        <span className='text-5xl dark:text-white text-gray-700 mb-5 font-bold flex items-center justify-center'>
           <img
             className='h-20 mr-3'
             src={getTempIcon(
@@ -43,11 +48,11 @@ export const Home: React.FC<IHome> = ({ theme }) => {
           />
           {Math.ceil(weather?.main.temp ? weather.main.temp : 0)}°C
         </span>
-        <span className='mb-5 font-semibold'>
+        <span className='mb-5 font-semibold dark:text-white text-gray-700'>
           <span className='text-2xl '>{weather?.name}, </span>
           <span className='uppercase text-2xl'>{weather?.sys.country}</span>
         </span>
-        <ul className='flex flex-col sm:flex-row items-center mb-4 space-y-2 sm:space-y-0'>
+        <ul className='flex flex-col sm:flex-row items-center mb-4 space-y-2 sm:space-y-0 dark:text-white text-gray-700'>
           <li className='sm:after:content-["•"] sm:after:mx-3 after:opacity-70'>
             <span className='font-bold'>Feels like: </span>
             <span>
