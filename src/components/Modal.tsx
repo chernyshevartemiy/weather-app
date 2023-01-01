@@ -29,7 +29,7 @@ const Modal: React.FC<IModal> = ({ isVisible, setVisible, theme }) => {
       id='wrapper'
       onClick={(e) => handleClose(e)}
     >
-      <div className={`${theme && 'dark'} w-[400px] flex flex-col mb-[10rem] shadow-lg`}>
+      <div className={`${theme && 'dark'} w-[400px] flex flex-col shadow-lg`}>
         <button
           className='self-end text-white'
           onClick={() => setVisible((prev) => !prev)}
@@ -52,7 +52,7 @@ const Modal: React.FC<IModal> = ({ isVisible, setVisible, theme }) => {
             type='submit'
             onClick={() => goHandler(search)}
             className='dark:bg-[#1956db] dark:hover:bg-[#0e48c5] bg-gray-200 hover:bg-gray-300
-            transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded  focus:outline-none self-start px-2.5 text-lg'
+            transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded focus:outline-none self-start px-2.5 text-lg'
           >
             Go!
           </button>

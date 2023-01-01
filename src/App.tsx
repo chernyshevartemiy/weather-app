@@ -16,7 +16,7 @@ type Location = {
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
-  const [theme, setTheme] = React.useState<boolean>(true);
+  const [theme, setTheme] = React.useState<boolean>(false);
   React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (response: Location) => {
