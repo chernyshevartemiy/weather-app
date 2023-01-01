@@ -3,10 +3,10 @@ import icon from '.././assets/images/icon.svg';
 import { SlSocialGithub } from 'react-icons/sl';
 import { TbSun, TbSunOff } from 'react-icons/tb';
 import { FaDiscord, FaHome } from 'react-icons/fa';
-import { FiSearch } from 'react-icons/fi';
 import { VscLibrary } from 'react-icons/vsc';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import Modal from './Modal';
+import { NavLink } from 'react-router-dom';
 
 type IHeader = {
   theme: boolean;
@@ -20,48 +20,39 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
     <header className={theme ? 'dark sticky top-0' : 'sticky top-0'}>
       <div className='dark:bg-[#1F2937] bg-white drop-shadow-md'>
         <nav className=' flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5'>
-          <a className='flex items-center' href='#'>
+          <NavLink className='flex items-center' to='/'>
             <img className='mr-3 h-9' src={icon} alt='' />
             <span className='text-xl text-gray-800 font-semibold dark:text-gray-100 transition-all hover:text-black dark:hover:text-white'>
               Weather App
             </span>
-          </a>
+          </NavLink>
           <div className='hidden lg:flex'>
             <ul className='flex font-medium space-x-8 dark:text-gray-200 text-gray-700'>
               <li className='block'>
-                <a
+                <NavLink
                   className='hover:text-gray-900 transition-all dark:hover:text-white text-sm block pr-4 pl-3'
-                  href='#'
+                  to='/'
                 >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className='block'>
-                <a
-                  className='hover:text-gray-900 transition-all text-sm
-            dark:hover:text-white block pr-4 pl-3'
-                  href='#'
-                >
-                  Search
-                </a>
-              </li>
-              <li className='block'>
-                <a
+                <NavLink
                   className='hover:text-gray-900
             dark:hover:text-white  transition-all text-sm block pr-4 pl-3'
-                  href='#'
+                  to='saved'
                 >
                   Saved
-                </a>
+                </NavLink>
               </li>
               <li className='block'>
-                <a
+                <NavLink
                   className='hover:text-gray-900
             dark:hover:text-white transition-all text-sm block pr-4 pl-3'
-                  href='#'
+                  to='about'
                 >
                   About
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -143,12 +134,6 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
                 <button className='flex items-center space-x-2'>
                   <FaHome />
                   <span>Home</span>
-                </button>
-              </li>
-              <li className='py-2 dark:hover:text-[#1956db] hover:text-gray-900 w-full cursor-pointer transition-all'>
-                <button className='flex items-center space-x-2'>
-                  <FiSearch />
-                  <span>Search</span>
                 </button>
               </li>
               <li className='py-2 dark:hover:text-[#1956db] hover:text-gray-900 w-full cursor-pointer transition-all'>

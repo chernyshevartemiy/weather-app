@@ -18,24 +18,25 @@ const savedSlice = createSlice({
   initialState,
   reducers: {
     addWeather: (state, action: PayloadAction<string>) => {
-      const findWeather = state.savedWeather.find(
-        (weather) => weather.name === action.payload
-      );
-      if (findWeather) {
-        findWeather.isSaved = !findWeather.isSaved;
-        state.savedWeather = state.savedWeather.filter((weather) => {
-          if (weather.isSaved) {
-            return true;
-          } else {
-            return false;
-          }
-        });
-      } else {
-        state.savedWeather.push({
-          name: action.payload,
-          isSaved: true,
-        });
+      if (action.payload) {
+        const findWeather = state.savedWeather.find(
+          (weather) => weather.name === action.payload
+        );
+        if (findWeather) {
+          findWeather.isSaved = !findWeather.isSaved;
+          state.savedWeather = state.savedWeather.filter((weather) => {
+            if (weather.isSaved) {
+              return true;
+            }
+          });
+        } else {
+          state.savedWeather.push({
+            name: action.payload,
+            isSaved: true,
+          });
+        }
       }
+      return
     },
   },
 });

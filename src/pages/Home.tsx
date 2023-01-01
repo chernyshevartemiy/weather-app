@@ -31,7 +31,7 @@ export const Home: React.FC<IHome> = ({ theme }) => {
   }, [theme]);
   return (
     <main className={theme ? 'dark' : ''}>
-      <div className='text-gray-100  max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center pt-10'>
+      <div className='text-gray-100  max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center py-10'>
         <Input theme={theme} value={value} onChangeInput={onChangeInput} />
         <img
           className='h-40'
@@ -72,9 +72,9 @@ export const Home: React.FC<IHome> = ({ theme }) => {
           </li>
         </ul>
         <button
-          className='dark:text-white
-             bg-gray-200 hover:bg-gray-300
-              text-gray-700 dark:hover:bg-[#0e48c5] dark:bg-[#1956db] transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none ml-2 '
+          className='
+            dark:text-white bg-gray-200 hover:bg-gray-300 text-gray-700 dark:hover:bg-[#0e48c5]
+            dark:bg-[#1956db] transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none ml-2 text-sm'
           onClick={() => {
             dispatch(addWeather(weather?.name as string));
           }}
