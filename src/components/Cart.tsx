@@ -4,7 +4,9 @@ import getIcon from '../helpers/getIcon';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { addWeather } from '../store/slices/savedSlice';
 import { WeatherResponse } from '../types';
-
+import { AiFillDelete } from 'react-icons/ai';
+import { MdAddBox } from 'react-icons/md';
+import { IsSaved } from './IsSaved';
 type ICart = {
   name: string;
   index: number;
@@ -13,12 +15,6 @@ type ICart = {
 const Cart: React.FC<ICart> = ({ name, index }) => {
   const [weather, setWeather] = React.useState<WeatherResponse | null>(null);
   const dispatch = useAppDispatch();
-  const { savedWeather } = useAppSelector((state) => state.saved);
-  const findWeather = savedWeather.find((el) => {
-    if (el.name === (weather?.name as string)) {
-      return true;
-    }
-  });
   React.useEffect(() => {
     axios
       .get(
@@ -29,9 +25,9 @@ const Cart: React.FC<ICart> = ({ name, index }) => {
       });
   }, []);
   return (
-    <div className='w-[360px] h-[240px] sm:w-[450px] text-gray-800 bg-[#fefefe] rounded-md p-3 flex flex-col shadow-md border-2 border-gray-400 dark:bg-[#1F2937] dark:text-white dark:border-gray-600'>
-      <div className='flex justify-between items-center'>
-        <span className='font-bold text-xl'>
+    <div className='w-[360px] h-[250px] sm:w-[450px] text-gray-800 bg-[#fefefe]  rounded-md p-3 flex flex-col shadow-md border-2 border-gray-400 dark:bg-[#1F2937] dark:text-white dark:border-gray-600'>
+      <div className='flex justify-between items-center '>
+        <span className='font-bold text-lg'>
           {index + 1}. {weather?.name}, {weather?.sys.country}
         </span>
         <img
@@ -52,8 +48,8 @@ const Cart: React.FC<ICart> = ({ name, index }) => {
         <span className='font-semibold'>Humidity: </span>
         {weather?.main.humidity}%
       </span>
-      <span className='mb-2'>
-        <span className='font-bold'>Feels Like: </span>
+      <span className='mb-4'>
+        <span className='font-semibold'>Feels Like: </span>
         {Math.ceil(weather?.main.feels_like ? weather?.main.feels_like : 0)}°C
       </span>
       <button
@@ -64,7 +60,7 @@ const Cart: React.FC<ICart> = ({ name, index }) => {
           dispatch(addWeather(weather?.name as string));
         }}
       >
-        {findWeather ? '- Delete from saved' : '+ Add to saved'}
+        <IsSaved weather={weather}/>
       </button>
     </div>
   );

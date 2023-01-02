@@ -131,34 +131,40 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
           <div className='dark:text-gray-100 text-gray-700 max-w-screen-xl mx-auto block lg:hidden font-semibold fixed w-full'>
             <ul className='flex-col px-4 bg-white dark:bg-[#1F2937] w-full shadow-md'>
               <li className='py-2 dark:hover:text-[#1956db] hover:text-gray-900 w-full cursor-pointer transition-all'>
-                <button className='flex items-center space-x-2'>
-                  <FaHome />
-                  <NavLink onClick={() => setBurger((prev) => !prev)} to='/'>
-                    Home
-                  </NavLink>
-                </button>
+                <NavLink
+                  className='flex items-center space-x-2'
+                  onClick={() => setBurger((prev) => !prev)}
+                  to='/'
+                >
+                  <button className='flex items-center space-x-2'>
+                    <FaHome />
+                    <span>Home</span>
+                  </button>
+                </NavLink>
               </li>
               <li className='py-2 dark:hover:text-[#1956db] hover:text-gray-900 w-full cursor-pointer transition-all'>
-                <button className='flex items-center space-x-2'>
-                  <VscLibrary />
-                  <NavLink
-                    onClick={() => setBurger((prev) => !prev)}
-                    to='saved'
-                  >
-                    Saved
-                  </NavLink>
-                </button>
+                <NavLink
+                  className='flex items-center space-x-2'
+                  onClick={() => setBurger((prev) => !prev)}
+                  to='saved'
+                >
+                  <button className='flex items-center space-x-2'>
+                    <VscLibrary />
+                    <span>Saved</span>
+                  </button>
+                </NavLink>
               </li>
               <li className='py-2 dark:hover:text-[#1956db] hover:text-gray-900 w-full cursor-pointer transition-all'>
-                <button className='flex items-center space-x-2'>
-                  <AiOutlineInfoCircle />
-                  <NavLink
-                    onClick={() => setBurger((prev) => !prev)}
-                    to='about'
-                  >
-                    About
-                  </NavLink>
-                </button>
+                <NavLink
+                  className='flex items-center space-x-2'
+                  onClick={() => setBurger((prev) => !prev)}
+                  to='about'
+                >
+                  <button className='flex items-center space-x-2'>
+                    <AiOutlineInfoCircle />
+                    <span>About</span>
+                  </button>
+                </NavLink>
               </li>
             </ul>
           </div>
