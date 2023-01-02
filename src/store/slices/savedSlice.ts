@@ -25,9 +25,7 @@ const savedSlice = createSlice({
         if (findWeather) {
           findWeather.isSaved = !findWeather.isSaved;
           state.savedWeather = state.savedWeather.filter((weather) => {
-            if (weather.isSaved) {
-              return true;
-            }
+            if (weather.isSaved) return true;
           });
         } else {
           state.savedWeather.push({
@@ -36,7 +34,7 @@ const savedSlice = createSlice({
           });
         }
       }
-      return
+      return;
     },
   },
 });

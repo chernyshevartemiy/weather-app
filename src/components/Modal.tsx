@@ -1,6 +1,8 @@
 import React from 'react';
 import { useAppDispatch } from '../hooks/hooks';
 import { getWeather } from '../async/getWeather';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 type IModal = {
   isVisible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,11 +18,16 @@ const Modal: React.FC<IModal> = ({ isVisible, setVisible, theme }) => {
       setVisible((prev) => !prev);
     }
   };
+  const navigate = useNavigate();
+  const location = useLocation();
   const inputRef = React.useRef<HTMLInputElement>(null);
   const goHandler = (q: string) => {
     dispatch(getWeather(q));
     setVisible((prev) => !prev);
     setSearch('');
+    if (location.pathname === '/saved') {
+      navigate('/');
+    }
   };
   if (!isVisible) return null;
   return (
@@ -52,7 +59,7 @@ const Modal: React.FC<IModal> = ({ isVisible, setVisible, theme }) => {
             type='submit'
             onClick={() => goHandler(search)}
             className='dark:bg-[#1956db] dark:hover:bg-[#0e48c5] bg-gray-200 hover:bg-gray-300
-            transition-all focus:ring-2 focus:ring-gray-300 font-medium rounded focus:outline-none self-start px-2.5 text-lg'
+            transition-all focus:ring-2 focus:ring-gray-400 font-medium rounded focus:outline-none self-start px-2.5 text-lg'
           >
             Go!
           </button>

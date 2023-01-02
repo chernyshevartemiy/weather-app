@@ -35,12 +35,15 @@ const App: React.FC = () => {
       }
     );
   }, []);
+  React.useEffect(() => {
+    document.body.style.backgroundColor = theme ? '#101827' : '#DDDDDD';
+  }, [theme]);
   return (
     <Routes>
       <Route path='/' element={<Layout theme={theme} setTheme={setTheme} />}>
         <Route index element={<Home theme={theme} />} />
-        <Route path='saved' element={<Saved/>}/>
-        <Route path='about' element={<About/>}/>
+        <Route path='saved' element={<Saved theme={theme}/>} />
+        <Route path='about' element={<About />} />
       </Route>
     </Routes>
   );
