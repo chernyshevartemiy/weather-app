@@ -25,7 +25,7 @@ const Cart: React.FC<ICart> = ({ name, index }) => {
       });
   }, []);
   return (
-    <div className='w-[360px] h-[250px] sm:w-[450px] text-gray-800 bg-[#fefefe]  rounded-md p-3 flex flex-col shadow-md border-2 border-gray-400 dark:bg-[#1F2937] dark:text-white dark:border-gray-600'>
+    <div className='w-[360px] h-[250px] sm:w-[500px] text-gray-800 bg-[#fefefe]  rounded-md p-3 flex flex-col shadow-md border-2 border-gray-400 dark:bg-[#1F2937] dark:text-white dark:border-gray-600'>
       <div className='flex justify-between items-center '>
         <span className='font-bold text-lg'>
           {index + 1}. {weather?.name}, {weather?.sys.country}

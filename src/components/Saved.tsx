@@ -11,7 +11,7 @@ const Saved: React.FC<ISaved> = ({ theme }) => {
   return (
     <main className={theme ? 'dark' : ''}>
       <div className='text-gray-700 dark:text-gray-100  max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center py-10 space-y-4'>
-        <h1 className='font-semibold mb-3 text-lg'>
+        <h1 className='font-semibold mb-3 text-xl'>
           {savedWeather.length === 0
             ? "You don't have saved weather"
             : 'Your saved weather:'}
