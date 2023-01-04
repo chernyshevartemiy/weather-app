@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getDataFromLs } from '../../helpers/getDataFromLs';
 
 export type Weather = {
   name: string;
@@ -10,7 +11,7 @@ type savedState = {
 };
 
 const initialState: savedState = {
-  savedWeather: [],
+  savedWeather: getDataFromLs(),
 };
 
 const savedSlice = createSlice({
@@ -34,7 +35,10 @@ const savedSlice = createSlice({
           });
         }
       }
-      return;
+      if (!action.payload) {
+        return;
+      }
+      localStorage.setItem('saved', JSON.stringify(state.savedWeather))
     },
   },
 });
