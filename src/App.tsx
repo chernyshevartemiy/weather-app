@@ -6,7 +6,7 @@ import { Home } from './pages/Home';
 import { Layout } from './components/Layout';
 import { Route, Routes } from 'react-router-dom';
 import { Saved } from './components/Saved';
-import { About } from './pages/About';
+import { Contact } from './pages/Contact';
 
 export type Coords = {
   latitude: number;
@@ -43,7 +43,7 @@ const App: React.FC = () => {
       <Route path='/' element={<Layout theme={theme} setTheme={setTheme} />}>
         <Route index element={<Home theme={theme} />} />
         <Route path='saved' element={<Saved theme={theme}/>} />
-        <Route path='about' element={<About />} />
+        <Route path='contact' element={<Contact />} />
       </Route>
     </Routes>
   );

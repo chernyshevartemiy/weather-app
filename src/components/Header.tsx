@@ -4,9 +4,10 @@ import { SlSocialGithub } from 'react-icons/sl';
 import { TbSun, TbSunOff } from 'react-icons/tb';
 import { FaDiscord, FaHome } from 'react-icons/fa';
 import { VscLibrary } from 'react-icons/vsc';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
 import Modal from './Modal';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { RiContactsFill } from 'react-icons/ri';
+import { CustomLink } from './CustomLink';
 
 type IHeader = {
   theme: boolean;
@@ -16,43 +17,37 @@ type IHeader = {
 export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
   const [burger, setBurger] = React.useState<boolean>(false);
   const [isVisible, setVisible] = React.useState<boolean>(false);
+  const location = useLocation();
+  const getPath = () => {
+    if (location.pathname === '/') {
+      return 'Home';
+    } else {
+      const firstLetter = location.pathname.charAt(1).toUpperCase();
+      return firstLetter + location.pathname.substring(2);
+    }
+  };
   return (
     <header className={theme ? 'dark sticky top-0' : 'sticky top-0'}>
       <div className='dark:bg-[#1F2937] bg-[#fefefe] drop-shadow-md'>
         <nav className=' flex items-center justify-between mx-auto max-w-screen-xl px-4 lg:px-6 py-2.5'>
-          <NavLink className='flex items-center' to='/'>
-            <img className='mr-3 h-9' src={icon} alt='' />
-            <span className='text-xl text-gray-800 font-semibold dark:text-gray-100 transition-all hover:text-black dark:hover:text-white'>
-              Weather App
+          <div className='flex items-center min-w-[160px]'>
+            <NavLink to='/'>
+              <img className='mr-6 h-10' src={icon} alt='' />
+            </NavLink>
+            <span className='font-bold text-xl dark:text-white text-gray-800 border-b-2 border-gray-700 dark:border-gray-200 block lg:hidden'>
+              {getPath()}
             </span>
-          </NavLink>
+          </div>
           <div className='hidden lg:flex'>
             <ul className='flex font-medium space-x-8 dark:text-gray-200 text-gray-700'>
               <li className='block'>
-                <NavLink
-                  className='hover:text-gray-900 transition-all dark:hover:text-white text-sm block pr-4 pl-3'
-                  to='/'
-                >
-                  Home
-                </NavLink>
+                <CustomLink to='/' children='Home' />
               </li>
               <li className='block'>
-                <NavLink
-                  className='hover:text-gray-900
-            dark:hover:text-white  transition-all text-sm block pr-4 pl-3'
-                  to='saved'
-                >
-                  Saved
-                </NavLink>
+                <CustomLink to='saved' children='Saved' />
               </li>
               <li className='block'>
-                <NavLink
-                  className='hover:text-gray-900
-            dark:hover:text-white transition-all text-sm block pr-4 pl-3'
-                  to='about'
-                >
-                  About
-                </NavLink>
+                <CustomLink to='contact' children='Contact' />
               </li>
             </ul>
           </div>
@@ -103,7 +98,6 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
             text-gray-700
           dark:hover:bg-[#0e48c5]
             dark:bg-[#1956db]
-
             transition-all focus:ring-2 focus:ring-gray-400 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5  focus:outline-none ml-2 
             '
               onClick={() => setVisible((prev) => !prev)}
@@ -158,11 +152,11 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
                 <NavLink
                   className='flex items-center space-x-2'
                   onClick={() => setBurger((prev) => !prev)}
-                  to='about'
+                  to='contact'
                 >
                   <button className='flex items-center space-x-2'>
-                    <AiOutlineInfoCircle />
-                    <span>About</span>
+                    <RiContactsFill />
+                    <span>Contact</span>
                   </button>
                 </NavLink>
               </li>
