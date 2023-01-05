@@ -13,7 +13,7 @@ const Contact: React.FC<IContact> = ({ theme }) => {
         <div className='flex space-x-10'>
           <div className='flex flex-col'>
             <span className='flex font-bold text-sm mb-1'>
-              Send a message <b className='text-blue-500'>.</b>
+              Send a message.
             </span>
             <span className='text-xs text-gray-500 mb-3 dark:text-gray-400'>
               For questions and new projects.
