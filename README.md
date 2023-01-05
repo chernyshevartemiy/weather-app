@@ -5,6 +5,7 @@
 - [Demo](#demo)
 - [Install](#install)
 - [Stack](#stack)
+- [Contributing](#contributing)
 - [Author](#author)
 
 ## Demo
@@ -26,7 +27,7 @@ To view demo examples locally clone the repository and run `npm install && npm r
 
 ### Backend ⚒️
 
-- Deploy: [Github](https://github.com/)
+- Deploy: [GitHub](https://github.com/)
 - API: [Open Weather API](https://openweathermap.org/)
 
 ## Contributing
