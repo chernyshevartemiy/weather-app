@@ -1,12 +1,8 @@
 import React from 'react';
 import { getWeather } from './async/getWeather';
-import { Header } from './components/Header';
 import { useAppDispatch } from './hooks/hooks';
-import { Home } from './pages/Home';
 import { Layout } from './components/Layout';
 import { Route, Routes } from 'react-router-dom';
-import { Saved } from './components/Saved';
-import { Contact } from './pages/Contact';
 
 export type Coords = {
   latitude: number;
@@ -17,6 +13,17 @@ type Location = {
   coords: Coords;
   timestamp: number;
 };
+
+const Home = React.lazy(
+  () => import(/*webpackChunkName: 'Home' */ './pages/Home')
+);
+const Saved = React.lazy(
+  () => import(/*webpackChunkName: 'Saved' */ './pages/Saved')
+);
+
+const Contact = React.lazy(
+  () => import(/*webpackChunkName: 'Contact' */ './pages/Contact')
+);
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -41,9 +48,30 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout theme={theme} setTheme={setTheme} />}>
-        <Route index element={<Home theme={theme} />} />
-        <Route path='saved' element={<Saved theme={theme}/>} />
-        <Route path='contact' element={<Contact />} />
+        <Route
+          index
+          element={
+            <React.Suspense>
+              <Home theme={theme} />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path='saved'
+          element={
+            <React.Suspense>
+              <Saved theme={theme} />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path='contact'
+          element={
+            <React.Suspense>
+              <Contact theme={theme} />
+            </React.Suspense>
+          }
+        />
       </Route>
     </Routes>
   );

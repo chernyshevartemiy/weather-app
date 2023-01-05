@@ -25,7 +25,7 @@ const Modal: React.FC<IModal> = ({ isVisible, setVisible, theme }) => {
     dispatch(getWeather(q));
     setVisible((prev) => !prev);
     setSearch('');
-    if (location.pathname === '/saved') {
+    if (location.pathname === '/saved' || '/contact') {
       navigate('/');
     }
   };
@@ -52,7 +52,7 @@ const Modal: React.FC<IModal> = ({ isVisible, setVisible, theme }) => {
             ref={inputRef}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className='dark:bg-[#374151] bg-gray-50 border-b border-gray-400 text-md w-full p-2.5 placeholder-gray-400 text-black dark:text-white text-sm mb-5 font-medium outline-none'
+            className='dark:bg-[#374151] bg-gray-50 border-b-2 border-gray-400 text-md w-full p-2.5 placeholder-gray-400 text-black dark:text-white text-sm mb-5 font-medium outline-none'
             placeholder='&#xF002;   Bratislava'
           />
           <button

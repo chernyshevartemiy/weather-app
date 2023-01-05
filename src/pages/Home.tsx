@@ -12,7 +12,7 @@ type IHome = {
   theme: boolean;
 };
 
-export const Home: React.FC<IHome> = ({ theme }) => {
+const Home: React.FC<IHome> = ({ theme }) => {
   const [value, setValue] = React.useState<string>('');
   const dispatch = useAppDispatch();
   const { weather } = useAppSelector((state) => state.weather);
@@ -28,10 +28,13 @@ export const Home: React.FC<IHome> = ({ theme }) => {
     }, 1000),
     []
   );
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    searchHandler(e.target.value);
-  };
+  const onChangeInput = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+      searchHandler(e.target.value);
+    },
+    []
+  );
   return (
     <main className={theme ? 'dark' : ''}>
       <div className='text-gray-100  max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center py-10'>
@@ -77,14 +80,15 @@ export const Home: React.FC<IHome> = ({ theme }) => {
         <button
           className='
             dark:text-white bg-gray-200 hover:bg-gray-300 text-gray-700 dark:hover:bg-[#0e48c5]
-            dark:bg-[#1956db] transition-all focus:ring-2 focus:ring-gray-400 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none ml-2'
+            dark:bg-[#1956db] transition-all focus:ring-2 focus:ring-gray-400 font-medium rounded px-3 lg:px-4 py-1.5 lg:py-2 focus:outline-none ml-2'
           onClick={() => {
             dispatch(addWeather(weather?.name as string));
           }}
         >
-          <IsSaved weather={weather}/>
+          <IsSaved weather={weather} />
         </button>
       </div>
     </main>
   );
 };
+export default Home;

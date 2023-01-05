@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cart } from './Cart';
+import { Cart } from '../components/Cart';
 import { useAppSelector } from '../hooks/hooks';
 
 type ISaved = {
@@ -11,11 +11,8 @@ const Saved: React.FC<ISaved> = ({ theme }) => {
   return (
     <main className={theme ? 'dark' : ''}>
       <div className='text-gray-700 dark:text-gray-100  max-w-screen-xl mx-auto px-4 lg:px-6 flex flex-col items-center py-10 space-y-4'>
-        <h1 className='font-semibold text-lg'>
-          {savedWeather.length === 0
-            ? "You don't have saved weather"
-            : ''}
-        </h1>
+        {savedWeather.length === 0 ? <h2 className='font-medim text-lg'>You don't have saved weather</h2> : ''}
+
         {savedWeather.map((weather, i) => {
           return <Cart index={i} key={weather.name} name={weather.name} />;
         })}
@@ -24,4 +21,4 @@ const Saved: React.FC<ISaved> = ({ theme }) => {
   );
 };
 
-export { Saved };
+export default Saved;

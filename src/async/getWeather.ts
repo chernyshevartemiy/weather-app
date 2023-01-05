@@ -12,12 +12,16 @@ export const getWeather = createAsyncThunk(
       const { weather } = state as { weather: WeatherState };
       const { isMounted } = weather;
       if (!isMounted) {
-        if (typeof(coord) === 'object') {
+        if (typeof coord === 'object') {
           const response = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?&units=metric&lat=${coord.latitude}&lon=${coord.longitude}&appid=20c4bd51cf84f12ebda1a2d7f69862bc`
           );
           const data: WeatherResponse = response.data;
-          return data;
+          if (data) {
+            return data;
+          } else {
+            return rejectWithValue('rejected');
+          }
         }
       } else {
         const response = await axios.get(
@@ -26,8 +30,9 @@ export const getWeather = createAsyncThunk(
         const data: WeatherResponse = response.data;
         if (data) {
           return data;
+        } else {
+          return rejectWithValue('rejected');
         }
-        return rejectWithValue('rejected');
       }
     } catch (error: any) {
       return rejectWithValue('rejected');

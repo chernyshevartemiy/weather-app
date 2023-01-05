@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from '.././assets/images/icon.svg';
+import icon from '.././assets/icons/icon.svg';
 import { SlSocialGithub } from 'react-icons/sl';
 import { TbSun, TbSunOff } from 'react-icons/tb';
 import { FaDiscord, FaHome } from 'react-icons/fa';
@@ -96,9 +96,9 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
             bg-gray-200
             hover:bg-gray-300
             text-gray-700
-          dark:hover:bg-[#0e48c5]
+            dark:hover:bg-[#0e48c5]
             dark:bg-[#1956db]
-            transition-all focus:ring-2 focus:ring-gray-400 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5  focus:outline-none ml-2 
+            transition-all focus:ring-2 focus:ring-gray-400 font-medium rounded text-sm px-3 lg:px-4 py-1.5 lg:py-2 focus:outline-none ml-2 
             '
               onClick={() => setVisible((prev) => !prev)}
             >
