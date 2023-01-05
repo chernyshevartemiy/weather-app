@@ -10,7 +10,7 @@
 
 ## Demo
 
-To view a demo online: [Weather App]('link')
+To view a demo online: [Weather App](https://chernyshevartemiy.github.io/weather-app/)
 
 ## Install
 
