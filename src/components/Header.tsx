@@ -34,7 +34,7 @@ export const Header: React.FC<IHeader> = ({ theme, setTheme }) => {
             <NavLink to='/'>
               <img className='mr-6 h-10' src={icon} alt='' />
             </NavLink>
-            <span className='font-bold text-xl dark:text-white text-gray-800 border-b-2 border-gray-700 dark:border-gray-200 block lg:hidden'>
+            <span className='font-bold text-xl dark:text-white text-gray-800dark:border-gray-200 block lg:hidden'>
               {getPath()}
             </span>
           </div>
