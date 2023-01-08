@@ -28,7 +28,7 @@ To view demo examples locally clone the repository and run `npm install && npm r
 ### Backend ⚒️
 
 - Deploy: [GitHub](https://github.com/)
-- API: [Open Weather API](https://openweathermap.org/)
+- API: [Open Weather API](https://openweathermap.org/), [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 
 ## Contributing
 
